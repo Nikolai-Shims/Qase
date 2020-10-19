@@ -9,11 +9,11 @@
         <log4j.core>2.12.1</log4j.core>
         <lombok>1.18.8</lombok>
         <allure.testng>2.7.0</allure.testng>
-        <log4j.core>2.12.1</log4j.core>
         <jackson.dataformat.yaml>2.10.1</jackson.dataformat.yaml>
         <maven.surfire.plugin>3.0.0-M3</maven.surfire.plugin>
         <allure.maven>2.10.0</allure.maven>
         <aspect.jveaver>1.9.1</aspect.jveaver>
+        <testng>7.0.0</testng>
     </properties>
 
 
@@ -75,6 +75,15 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.core}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
