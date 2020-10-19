@@ -12,7 +12,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(TestListener.class)
 public class BaseTest {
-
     LoginSteps loginSteps;
 
     @BeforeMethod
