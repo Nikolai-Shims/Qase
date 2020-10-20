@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import io.qameta.allure.Step;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -14,8 +13,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class BaseTest {
     LoginSteps loginSteps;
 
-    @BeforeMethod
-    @Step("Initialize object and configuration settings")
+    @BeforeMethod (description = "Initialize object and configuration settings")
     public void beforeTest(){
         loginSteps = new LoginSteps();
         Configuration.browser= "chrome";
@@ -24,10 +22,10 @@ public class BaseTest {
         Configuration.startMaximized = true;
     }
 
-    @AfterMethod
-    @Step("Close browser")
+    @AfterMethod (alwaysRun = true, description = "Close browser")
     public void close(){
-        getWebDriver().quit();
+        if(null != getWebDriver())
+            getWebDriver().quit();
     }
 
 }

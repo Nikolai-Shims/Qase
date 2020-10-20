@@ -18,7 +18,7 @@ public class LoginPage extends BasePage{
 
     @Step("Open login page")
     public LoginPage openLoginPage(){
-    log.info("Open 'Login page' by link: " + URL);
+        log.info("Open 'Login page' by link: " + URL);
         open(URL);
         return this;
     }
