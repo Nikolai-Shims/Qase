@@ -37,7 +37,7 @@ jobs:
           command: google-chrome --version
       - run:
           name: Running tests
-          command: mvn clean install -Dusername=$username -Dpassword=$password
+          command: mvn clean install
       - run:
           name: Generate allure report
           command: mvn allure:report
