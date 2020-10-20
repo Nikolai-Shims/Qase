@@ -1,7 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
-import packages.LoginPage;
+import pages.LoginPage;
 
 public class LoginSteps {
 
@@ -11,7 +11,7 @@ public class LoginSteps {
         loginPage = new LoginPage();
     }
 
-    @Step("Open page,validate that 'Login page' was open and login")
+    @Step("Open page,validate that 'Login page' was opened and login")
     public LoginSteps login(String username, String password){
         loginPage
                 .openLoginPage()

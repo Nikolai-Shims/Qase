@@ -1,4 +1,4 @@
-package packages;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -23,10 +23,9 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    @Step("Validate that 'Login Page' was open")
+    @Step("Validate that 'Login Page' was opened")
     public LoginPage isLoginPageOpened(){
         $(By.id(LOGIN_BUTTON)).shouldBe(Condition.visible);
-        //$(By.id(LOGIN_BUTTON)).waitUntil(Condition.visible,timeout);
         return this;
     }
 

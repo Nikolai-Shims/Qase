@@ -1,4 +1,4 @@
-package packages;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -19,7 +19,7 @@ public class ProjectsPage extends BasePage{
         return new NewProjectPage();
     }
 
-    @Step("Validate that 'Project page' was open")
+    @Step("Validate that 'Project page' was opened")
     public ProjectsPage isProjectPageOpened(){
         $(CREATE_NEW_PROJECT_BUTTON).shouldBe(Condition.visible);
         return this;

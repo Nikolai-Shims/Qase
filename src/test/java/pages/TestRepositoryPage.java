@@ -1,4 +1,4 @@
-package packages;
+package pages;
 
 public class TestRepositoryPage {
 

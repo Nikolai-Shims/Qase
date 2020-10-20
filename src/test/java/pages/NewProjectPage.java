@@ -1,4 +1,4 @@
-package packages;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -16,14 +16,14 @@ public class NewProjectPage extends BasePage{
     private static final String BUTTON_CREATE_NEW_PROJECT = "//button[text()='Create project']";
     private static final String SETTINGS = "//span[text()='Settings']";
 
-    @Step("Validate that 'New Project' page was open")
+    @Step("Validate that 'New Project' page was opened")
     public NewProjectPage isNewProjectPageOpened(){
         $(By.xpath(BUTTON_CREATE_NEW_PROJECT)).shouldBe(Condition.visible);
         return this;
     }
 
-    @Step("????????????????????????????????????????????????????????????????????????????????????????????")
-    public TestRepositoryPage shouldBeProjectCreate(String projectName, String projectCode, String description){
+    @Step("Click button 'Create new project'")
+    public TestRepositoryPage createNewProject(String projectName, String projectCode, String description){
         $(PROJECT_NAME).sendKeys(projectName);
         $(PROJECT_CODE).sendKeys(projectCode);
         $(DESCRIPTION).sendKeys(description);
