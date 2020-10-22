@@ -5,9 +5,13 @@ import tests.another.Retry;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Fill 'Login page' fields with correct data", retryAnalyzer = Retry.class)
-    public void correctLogin(){
+    String invalidUsername = faker.bool().toString();
+    String invalidPassword = faker.name().lastName();
+
+    @Test(description = "Validate error message with invalid data", retryAnalyzer = Retry.class)
+    public void checkInvalidLogin() {
         loginSteps
-                .login(System.getenv("username"),System.getenv("password"));
+                .invalidLogin(invalidUsername, invalidPassword)
+                .validateErrorMessage("These credentials do not match our records.");
     }
 }
