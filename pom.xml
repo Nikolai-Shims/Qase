@@ -14,6 +14,7 @@
         <allure.maven>2.10.0</allure.maven>
         <aspect.jveaver>1.9.1</aspect.jveaver>
         <testng>7.0.0</testng>
+        <java.faker>0.15</java.faker>
     </properties>
 
 
@@ -106,6 +107,12 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
             <version>${jackson.dataformat.yaml}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${java.faker}</version>
         </dependency>
 
     </dependencies>
