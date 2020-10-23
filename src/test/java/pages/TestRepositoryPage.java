@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
-public class TestRepositoryPage extends BasePage{
+public class TestRepositoryPage extends BasePage {
 
     public static final String SETTINGS = "//span[text()='Settings']";
     private static final String CREATE_SUITE = "//a[text()='Create new suite']";
@@ -26,12 +26,12 @@ public class TestRepositoryPage extends BasePage{
     @Step("Open settings")
     public NewProjectPage openSettings() {
         log.info("Open 'Settings' by locator: " + SETTINGS);
-        $(By.xpath(SETTINGS)).waitUntil(Condition.appear,timeout).click();
+        $(By.xpath(SETTINGS)).waitUntil(Condition.appear, timeout).click();
         return new NewProjectPage();
     }
 
     @Step("Validate that 'Test Repository Page' was opened")
-    public TestRepositoryPage isTestRepositoryOpened() {
+    public TestRepositoryPage isPageOpened() {
         $(By.xpath(CREATE_SUITE)).shouldBe(Condition.visible);
         return this;
     }
@@ -48,7 +48,7 @@ public class TestRepositoryPage extends BasePage{
     @Step("Click button 'Create new suite'")
     public SuitePage createSuite() {
         log.info("Click button 'Create new suite' by locator: " + CREATE_SUITE);
-        $(By.xpath(CREATE_SUITE)).waitUntil(Condition.appear,timeout).click();
+        $(By.xpath(CREATE_SUITE)).waitUntil(Condition.appear, timeout).click();
         return new SuitePage();
     }
 
@@ -67,12 +67,13 @@ public class TestRepositoryPage extends BasePage{
         return new SuitePage();
     }
 
+    @Step("Get Suite name")
     public String validateSuiteName() {
         return $(NAME_PROJECT).getText();
     }
 
+    @Step("Get description")
     public String validateDescription() {
         return $(DESCRIPTION_PROJECT).getText();
     }
-
 }

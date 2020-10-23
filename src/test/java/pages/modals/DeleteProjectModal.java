@@ -14,7 +14,7 @@ public class DeleteProjectModal extends BasePage {
     private static final String BUTTON_DELETE_PROJECT = ".btn-cancel";
 
     @Step("Validate that 'Delete Project' modal window was opened")
-    public DeleteProjectModal isDeleteProjectModalOpened() {
+    public DeleteProjectModal isPageOpened() {
         $(BUTTON_CANCEL).shouldBe(Condition.visible);
         return this;
     }

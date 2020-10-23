@@ -24,7 +24,7 @@ public class ProjectSteps {
         log.info("Project with name: " + projectName + ", and description: " + description + ", will be create");
         projectsPage
                 .createNewProject()
-                .isNewProjectPageOpened()
+                .isPageOpened()
                 .createNewProject(projectName, description);
         return this;
     }
@@ -34,7 +34,7 @@ public class ProjectSteps {
         log.info("Project with name: " + nameOfProject + ", must be create");
         projectsPage
                 .openProjectPage()
-                .isProjectPageOpened();
+                .isPageOpened();
         sleep(3000);
         assertTrue(projectsPage.getNamesOfProject(nameOfProject));
         return this;
@@ -45,14 +45,14 @@ public class ProjectSteps {
         log.info("Project with name: " + projectName + ", will delete");
         projectsPage
                 .openProjectPage()
-                .isProjectPageOpened()
+                .isPageOpened()
                 .deleteProject(projectName)
-                .isTestRepositoryOpened()
+                .isPageOpened()
                 .openSettings()
                 .deleteProject()
-                .isDeleteProjectModalOpened()
+                .isPageOpened()
                 .confirmDeletion()
-                .isProjectPageOpened();
+                .isPageOpened();
         assertFalse(projectsPage.getNamesOfProject(projectName));
         return this;
     }

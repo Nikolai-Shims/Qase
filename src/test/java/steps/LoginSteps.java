@@ -20,7 +20,7 @@ public class LoginSteps {
         log.info("Fill the 'login page' with username: " + username + ", and password: " + password);
         loginPage
                 .openLoginPage()
-                .isLoginPageOpened()
+                .isPageOpened()
                 .login(username, password);
         return this;
     }
@@ -30,7 +30,7 @@ public class LoginSteps {
         log.info("Fill the 'login page' with username: " + username + ", and password: " + password);
         loginPage
                 .openLoginPage()
-                .isLoginPageOpened()
+                .isPageOpened()
                 .invalidLogin(username, password);
         return this;
     }

@@ -25,8 +25,9 @@ public class ProjectsPage extends BasePage {
         return new NewProjectPage();
     }
 
+    @Override
     @Step("Validate that 'Project page' was opened")
-    public ProjectsPage isProjectPageOpened() {
+    public ProjectsPage isPageOpened() {
         $(CREATE_NEW_PROJECT_BUTTON).shouldBe(Condition.visible);
         return this;
     }

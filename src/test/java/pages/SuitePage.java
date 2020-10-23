@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import steps.SuiteSteps;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -37,6 +38,12 @@ public class SuitePage extends BasePage {
         log.info("Click button 'Create suite' by locator: " + BUTTON_CREATE_SUITE);
         $(BUTTON_CREATE_SUITE).waitUntil(Condition.appear,timeout).click();
         return new TestRepositoryPage();
+    }
+
+    @Override
+    @Deprecated
+    public SuitePage isPageOpened(){
+        return this;
     }
 
 }

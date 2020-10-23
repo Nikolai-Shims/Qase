@@ -20,7 +20,7 @@ public class SuiteSteps {
     public SuiteSteps createNewSuite(String name, String description) {
         testRepositoryPage
                 .openTestRepositoryPage()
-                .isTestRepositoryOpened()
+                .isPageOpened()
                 .createSuite()
                 .fillSuiteName(name)
                 .fillDescription(description)
@@ -40,7 +40,7 @@ public class SuiteSteps {
     public SuiteSteps deleteSuite() {
         testRepositoryPage
                 .deleteSuite()
-                .isDeleteSuiteModalOpened()
+                .isPageOpened()
                 .confirmDeleteSuite();
         return this;
     }

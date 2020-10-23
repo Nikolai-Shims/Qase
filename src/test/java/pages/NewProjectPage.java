@@ -17,8 +17,9 @@ public class NewProjectPage extends BasePage {
     private static final String UPDATE_PROJECT = "button.btn-primary";
     private static final String DELETE_PROJECT = ".btn-cancel";
 
+    @Override
     @Step("Validate that 'New Project' page was opened")
-    public NewProjectPage isNewProjectPageOpened() {
+    public NewProjectPage isPageOpened() {
         $(By.xpath(BUTTON_CREATE_NEW_PROJECT)).shouldBe(Condition.visible);
         return this;
     }

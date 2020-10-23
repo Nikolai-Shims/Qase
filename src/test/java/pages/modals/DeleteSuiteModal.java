@@ -22,7 +22,7 @@ public class DeleteSuiteModal extends BasePage {
     }
 
     @Step("Validate that 'Delete suite' modal window was opened")
-    public DeleteSuiteModal isDeleteSuiteModalOpened() {
+    public DeleteSuiteModal isPageOpened() {
         $(BUTTON_CANCEL).shouldBe(Condition.visible);
         return this;
     }

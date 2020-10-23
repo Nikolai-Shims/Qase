@@ -24,18 +24,16 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    @Override
     @Step("Validate that 'Login Page' was opened")
-    public LoginPage isLoginPageOpened() {
+    public LoginPage isPageOpened() {
         $(By.id(LOGIN_BUTTON)).shouldBe(Condition.visible);
         return this;
     }
 
-    @Step("Fill the 'Login page' fields and login")
+    @Step("Fill the 'Login page' fields and redirect on ProjectsPage")
     public ProjectsPage login(String username, String password) {
-        log.info("Fill 'Email Address' field " + username + ", fill 'Password' field " + password);
-        $(EMAIL_ADDRESS_FIELD).sendKeys(username);
-        $(PASSWORD_FIELD).sendKeys(password);
-        $(By.id(LOGIN_BUTTON)).waitUntil(Condition.appear, timeout).click();
+     invalidLogin(username, password);
         return new ProjectsPage();
     }
 
@@ -46,7 +44,7 @@ public class LoginPage extends BasePage {
         return errorMessage;
     }
 
-    @Step("Fill login page with invalid data")
+    @Step("Fill login page")
     public LoginPage invalidLogin(String username, String password) {
         log.info("Fill 'Email Address' field " + username + ", fill 'Password' field " + password);
         $(EMAIL_ADDRESS_FIELD).sendKeys(username);
