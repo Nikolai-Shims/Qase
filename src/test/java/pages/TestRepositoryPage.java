@@ -21,7 +21,7 @@ public class TestRepositoryPage extends BasePage {
     private static final String EDIT_SUITE = ".fa-pencil-alt";
     private static final String NAME_PROJECT = ".suite-header";
     private static final String DESCRIPTION_PROJECT = ".suite-description";
-
+    private static final String CASE_NAME = ".case-row";
 
     @Step("Open settings")
     public NewProjectPage openSettings() {
@@ -36,7 +36,6 @@ public class TestRepositoryPage extends BasePage {
         return this;
     }
 
-
     @Step("Open working project by link: " + PROJECT_URL)
     public TestRepositoryPage openTestRepositoryPage() {
         log.info("Open 'Test Repository' by link: " + PROJECT_URL);
@@ -44,14 +43,12 @@ public class TestRepositoryPage extends BasePage {
         return this;
     }
 
-
     @Step("Click button 'Create new suite'")
     public SuitePage createSuite() {
         log.info("Click button 'Create new suite' by locator: " + CREATE_SUITE);
         $(By.xpath(CREATE_SUITE)).waitUntil(Condition.appear, timeout).click();
         return new SuitePage();
     }
-
 
     @Step("Choose option 'Delete' and press it")
     public DeleteSuiteModal deleteSuite() {
@@ -76,4 +73,21 @@ public class TestRepositoryPage extends BasePage {
     public String validateDescription() {
         return $(DESCRIPTION_PROJECT).getText();
     }
+
+
+    @Step("Click button 'Create new case'")
+    public TestCasePage createNewTestCase() {
+        log.info("Click button 'Create new case' by locator: " + CREATE_CASE);
+        $(By.xpath(CREATE_CASE)).waitUntil(Condition.appear, timeout).click();
+        return new TestCasePage();
+    }
+
+    @Step("Choose created Case")
+    public EditCasePage chooseCase() {
+        log.info("Choose Case by locator: " + CASE_NAME);
+        $(CASE_NAME).waitUntil(Condition.appear, timeout).click();
+        return new EditCasePage();
+    }
+
+
 }
