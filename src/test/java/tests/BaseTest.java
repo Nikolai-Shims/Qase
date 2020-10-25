@@ -34,7 +34,7 @@ public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.timeout = 3000;
         Configuration.clickViaJs = false;
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.startMaximized = true;
     }
 
