@@ -7,14 +7,14 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import pages.modals.DeleteSuiteModal;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class TestRepositoryPage extends BasePage {
 
     public static final String SETTINGS = "//span[text()='Settings']";
     private static final String CREATE_SUITE = "//a[contains(text(),'uite')]";
+    private static final String CREATE_CASE2 = "//a[contains(@class,'mr-2 btn-primary')]/child::i";
     private static final String CREATE_CASE = "//a[text()='Create new case']";
     private static final String PROJECT_URL = "https://app.qase.io/project/QASEPROJEC";
     private static final String DELETE_SUITE = "//span[text()='%s']/descendant::i[contains(@class,'fa-trash')]";
@@ -53,34 +53,39 @@ public class TestRepositoryPage extends BasePage {
     @Step("Choose option 'Delete' and press it")
     public DeleteSuiteModal deleteSuite(String name) {
         log.info("Find element by locator: " + DELETE_SUITE + ", move to element and press");
-        Selenide.actions().moveToElement($(By.xpath(String.format(DELETE_SUITE,name)))).click().build().perform();
+        Selenide.actions().moveToElement($(By.xpath(String.format(DELETE_SUITE, name)))).click().build().perform();
         return new DeleteSuiteModal();
     }
 
     @Step("Choose option 'Edit' and press it")
     public SuitePage editSuite(String suite) {
         log.info("Find element by locator: " + EDIT_SUITE + ", move to element and press it");
-        Selenide.actions().moveToElement($(By.xpath(String.format(EDIT_SUITE,suite)))).click().build().perform();
+        Selenide.actions().moveToElement($(By.xpath(String.format(EDIT_SUITE, suite)))).click().build().perform();
         return new SuitePage();
     }
 
     @Step("Get Suite name")
-    public String validateSuiteName(String suite ) {
-      log.info(String.format("Validate that 'Suite' with name %s was created",suite));
-    return $(By.xpath(String.format(SUITE_NAME,suite))).getText();
+    public String validateSuiteName(String suite) {
+        log.info(String.format("Validate that 'Suite' with name %s was created", suite));
+        return $(By.xpath(String.format(SUITE_NAME, suite))).getText();
     }
 
     @Step("Get description")
     public String validateDescription(String text) {
-        log.info(String.format("Get description data: %s",text));
-        return $(By.xpath(String.format(DESCRIPTION_PROJECT,text))).getText();
+        log.info(String.format("Get description data: %s", text));
+        return $(By.xpath(String.format(DESCRIPTION_PROJECT, text))).getText();
     }
 
 
     @Step("Click button 'Create new case'")
     public TestCasePage createNewTestCase() {
         log.info("Click button 'Create new case' by locator: " + CREATE_CASE);
-        $(By.xpath(CREATE_CASE)).waitUntil(Condition.appear, timeout).click();
+        int amount = $$(By.xpath(CREATE_CASE)).size();
+        if (amount != 0) {
+            $(By.xpath(CREATE_CASE)).waitUntil(Condition.appear, timeout).click();
+        } else {
+            $(By.xpath(CREATE_CASE2)).waitUntil(Condition.appear, timeout).click();
+        }
         return new TestCasePage();
     }
 
@@ -90,6 +95,5 @@ public class TestRepositoryPage extends BasePage {
         $(CASE_NAME).waitUntil(Condition.appear, timeout).click();
         return new EditCasePage();
     }
-
 
 }

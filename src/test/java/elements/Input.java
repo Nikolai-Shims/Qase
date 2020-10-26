@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class Input {
 
+    private static final String TEXT_BY_INPUT = "//*[text()='%s']/parent::div//p";
     String locator = "//*[text()='%s']/parent::div//p";
     String titleLocator = "//*[contains(text(),'%s')]/following-sibling::input";
     String label;
@@ -18,19 +19,26 @@ public class Input {
         this.label = label;
     }
 
-    @Step("Fill the 'Title'")
+    @Step("Fill the 'Title' with data: {text}")
     public Input writeTitle(String text) {
-        log.info("Fill the field " + label + ", with data: " + text + ",by locator: " + titleLocator);
+        log.info(String.format("Fill the field %s, with data: %s,by locator: %s", label, text, titleLocator));
         $(By.xpath(String.format(titleLocator, label))).clear();
         $(By.xpath(String.format(titleLocator, label))).sendKeys(text);
         return this;
     }
 
-    @Step("Fill the Input")
+    @Step("Fill the Input with data: {text} ")
     public Input write(String text) {
-        log.info("Fill the field " + label + " with data: " + text + ", by locator: " + locator);
+        log.info(String.format("Fill the field %s with data: %s, by locator: %s", label, text, locator));
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).clear();
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).sendKeys(text);
         return this;
+    }
+
+
+    @Step("Get text from the 'Input'")
+    public static String getTextByInput(String input) {
+        log.info("Get text from 'input' " + input);
+        return $(By.xpath(String.format(TEXT_BY_INPUT, input))).getText();
     }
 }

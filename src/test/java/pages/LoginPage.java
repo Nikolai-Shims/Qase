@@ -33,7 +33,7 @@ public class LoginPage extends BasePage {
 
     @Step("Fill the 'Login page' fields and redirect on ProjectsPage")
     public ProjectsPage login(String username, String password) {
-     invalidLogin(username, password);
+        invalidLogin(username, password);
         return new ProjectsPage();
     }
 

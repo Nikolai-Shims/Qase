@@ -3,7 +3,7 @@ package tests;
 import models.TestCase;
 import org.testng.annotations.Test;
 
-public class CaseTest extends BaseTest{
+public class CaseTest extends BaseTest {
 
     String title = faker.name().username();
     String description = faker.name().username();
@@ -16,18 +16,17 @@ public class CaseTest extends BaseTest{
     String editPostCondition = faker.name().username();
 
 
-
     TestCase testCase = TestCase.builder()
             .preConditions(preCondition)
             .description(description)
             .postConditions(postCondition)
             .title(title)
-            .status("Draft")
-            .severity("Major")
-            .priority("Low")
-            .type("Security")
-            .behavior("Positive")
-            .automationStatus("Automated")
+            .status("Actual")
+            .severity("Blocker")
+            .priority("High")
+            .type("Other")
+            .behavior("Not set")
+            .automationStatus("Not automated")
             .build();
 
     TestCase editCase = TestCase.builder()
@@ -35,23 +34,23 @@ public class CaseTest extends BaseTest{
             .description(editDescription)
             .postConditions(editPostCondition)
             .title(editTitle)
-            .status("Actual")
-            .severity("Minor")
-            .priority("High")
-            .type("Usability")
-            .behavior("Negative")
+            .status("Deprecated")
+            .severity("Trivial")
+            .priority("Low")
+            .type("Functional")
+            .behavior("Destructive")
             .automationStatus("Automated")
             .build();
 
     @Test
-    public void createEditAndDeleteCase(){
+    public void createEditAndDeleteCase() {
         loginSteps
-                .login(USERNAME,PASSWORD);
+                .login(USERNAME, PASSWORD);
         caseSteps
                 .createNewCase(testCase)
-                .validateThatCaseWasCreated("Major","Low",preCondition,description,"Positive","Security","Draft","Automated")
+                .validateThatCaseWasCreated(testCase)
                 .editCase(editCase)
-                .validateThatCaseWasEdited("Minor","High",editPreCondition,editDescription,"Negative","Usability","Actual","Automated")
+                .validateThatCaseWasEdited(editCase)
                 .deleteCase();
     }
 }

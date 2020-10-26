@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class Select {
 
+    private static final String TEXT_BY_SELECT = "//span[text()='%s']/following-sibling::span[contains(@class,'preview-quick-edit')]";
     String labelLocator = "//*[text()='%s']/parent::div//div[contains(@class, 'container')]";
     String optionLocator = "//*[contains(@id, 'react-select') and contains(text(),'%s')]";
     String label;
@@ -18,11 +19,17 @@ public class Select {
         this.label = label;
     }
 
-    @Step("Choose select, click on the select and choose option")
+    @Step("Click on the select {option}")
     public void select(String option) {
-        log.info("Choose select: " + label + ", and option: " + option);
-            $(By.xpath(String.format(labelLocator, label))).shouldBe(Condition.visible).click();
-            $(By.xpath(String.format(optionLocator, option))).shouldBe(Condition.visible).click();
+        log.info(String.format("Choose select: %s, and option: %s", label, option));
+        $(By.xpath(String.format(labelLocator, label))).shouldBe(Condition.visible).click();
+        $(By.xpath(String.format(optionLocator, option))).shouldBe(Condition.visible).click();
 
+    }
+
+    @Step("Get text from the 'Select'")
+    public static String getTextBySelect(String select) {
+        log.info("Get text from select " + select);
+        return $(By.xpath(String.format(TEXT_BY_SELECT, select))).getText();
     }
 }

@@ -1,5 +1,7 @@
 package steps;
 
+import elements.Input;
+import elements.Select;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.TestCase;
@@ -33,18 +35,18 @@ public class CaseSteps {
     }
 
     @Step("Validate that 'Case' was created")
-    public CaseSteps validateThatCaseWasCreated(String severity, String priority, String preCondition, String description, String behavior, String type, String status, String automation) {
-        log.info(String.format("Validate data: %s,%s,%s,%s,%s,%s,%s,%s", severity, priority, preCondition, description, behavior, type, status, automation));
+    public CaseSteps validateThatCaseWasCreated(TestCase testCase) {
+        log.info("Validate data: " + testCase);
         testRepositoryPage
                 .chooseCase();
-        assertEquals(editCasePage.getTextBySelect("Severity"), severity);
-        assertEquals(editCasePage.getTextBySelect("Priority"), priority);
-        assertEquals(editCasePage.getTextByInput("Preconditions"), preCondition);
-        assertEquals(editCasePage.getTextByInput("Description"), description);
-        assertEquals(editCasePage.getTextBySelect("Behavior"), behavior);
-        assertEquals(editCasePage.getTextBySelect("Type"), type);
-        assertEquals(editCasePage.getTextBySelect("Status"), status);
-        assertEquals(editCasePage.getTextBySelect("Automation"), automation);
+        assertEquals(Select.getTextBySelect("Severity"), testCase.getSeverity());
+        assertEquals(Select.getTextBySelect("Priority"), testCase.getPriority());
+        assertEquals(Input.getTextByInput("Preconditions"), testCase.getPreConditions());
+        assertEquals(Input.getTextByInput("Description"), testCase.getDescription());
+        assertEquals(Select.getTextBySelect("Behavior"), testCase.getBehavior());
+        assertEquals(Select.getTextBySelect("Type"), testCase.getType());
+        assertEquals(Select.getTextBySelect("Status"), testCase.getStatus());
+        assertEquals(Select.getTextBySelect("Automation"), testCase.getAutomationStatus());
         return this;
     }
 
@@ -60,9 +62,9 @@ public class CaseSteps {
     }
 
     @Step("Validate that existing case was edited")
-    public CaseSteps validateThatCaseWasEdited(String editSeverity, String editPriority, String editPreCondition, String editDescription, String editBehavior, String editType, String editStatus, String editAutomation) {
-        log.info(String.format("Validate data: %s,%s,%s,%s,%s,%s,%s,%s", editSeverity, editPriority, editPreCondition, editDescription, editBehavior, editType, editStatus, editAutomation));
-        validateThatCaseWasCreated(editSeverity, editPriority, editPreCondition, editDescription, editBehavior, editType, editStatus, editAutomation);
+    public CaseSteps validateThatCaseWasEdited(TestCase editTestCase) {
+        log.info("Validate data: " + editTestCase);
+        validateThatCaseWasCreated(editTestCase);
         return this;
     }
 

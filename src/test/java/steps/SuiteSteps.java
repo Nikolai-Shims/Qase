@@ -46,7 +46,7 @@ public class SuiteSteps {
     }
 
     @Step("Edit existing suite")
-    public SuiteSteps editExistingSuite(String suiteName,String editName, String editDescription) {
+    public SuiteSteps editExistingSuite(String suiteName, String editName, String editDescription) {
         testRepositoryPage
                 .editSuite(suiteName)
                 .fillSuiteName(editName)
@@ -58,10 +58,8 @@ public class SuiteSteps {
     @Step("Validate that 'Suite' was edited")
     public SuiteSteps validateThatSuiteWasEdited(String expectedName) {
         String actualEditedName = testRepositoryPage.validateSuiteName(expectedName);
-        //String actualEditedDescription = testRepositoryPage.validateDescription(expectedName);
-        log.info("Actual Suite name: " + actualEditedName );
+        log.info("Actual Suite name: " + actualEditedName);
         assertEquals(actualEditedName, expectedName);
-        //assertEquals(actualEditedDescription, expectedDescription);
         return this;
     }
 

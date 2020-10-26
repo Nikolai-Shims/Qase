@@ -34,7 +34,7 @@ public class NewProjectPage extends BasePage {
 
     @Step("Click button 'Delete Project'")
     public DeleteProjectModal deleteProject() {
-        $(DELETE_PROJECT).waitUntil(Condition.appear,timeout).click();
+        $(DELETE_PROJECT).waitUntil(Condition.appear, timeout).click();
         return new DeleteProjectModal();
     }
 }

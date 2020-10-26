@@ -16,7 +16,7 @@ public class SuiteTest extends BaseTest {
                 .login(USERNAME, PASSWORD);
         suiteSteps
                 .createNewSuite(suiteName, description)
-               .validateThatSuiteWasCreated(suiteName)
+                .validateThatSuiteWasCreated(suiteName)
                 .editExistingSuite(suiteName, editSuiteName, editDescription)
                 .validateThatSuiteWasEdited(editSuiteName)
                 .deleteSuite(editSuiteName);

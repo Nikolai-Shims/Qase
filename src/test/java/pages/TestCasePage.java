@@ -14,8 +14,9 @@ public class TestCasePage extends BasePage {
 
     private static final String BUTTON_SAVE = ".mr-3.save-button";
 
-    @Step("Create new Case")
+    @Step("Create new Case {testCase.title} ")
     public TestCasePage createNewCase(TestCase testCase) {
+        log.info("Create new test Case by name: " + testCase.getTitle());
         new Input("Title").writeTitle(testCase.getTitle());
         new Select("Status").select(testCase.getStatus());
         new Input("Description").write(testCase.getDescription());
@@ -30,9 +31,9 @@ public class TestCasePage extends BasePage {
     }
 
     @Step("Click the button 'Save'")
-    public TestRepositoryPage saveCase(){
+    public TestRepositoryPage saveCase() {
         log.info("Click the button 'Save' by locator: " + BUTTON_SAVE);
-            $(BUTTON_SAVE).waitUntil(Condition.appear,timeout).click();
+        $(BUTTON_SAVE).waitUntil(Condition.appear, timeout).click();
         return new TestRepositoryPage();
     }
 
