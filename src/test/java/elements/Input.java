@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 @Log4j2
 public class Input {
@@ -32,6 +33,7 @@ public class Input {
         log.info(String.format("Fill the field %s with data: %s, by locator: %s", label, text, locator));
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).clear();
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).sendKeys(text);
+        sleep(2000);
         return this;
     }
 
