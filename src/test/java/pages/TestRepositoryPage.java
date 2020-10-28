@@ -21,7 +21,7 @@ public class TestRepositoryPage extends BasePage {
     private static final String EDIT_SUITE = "//span[text()='%s']/descendant::i[contains(@class,'fa-pencil-alt')]";
     private static final String SUITE_NAME = "//span[text()='%s']";
     private static final String DESCRIPTION_PROJECT = "//span[text()='%s']/following-sibling::p[contains(@class,'suite-description')]";
-    private static final String CASE_NAME = ".case-row";
+    private static final String CASE_NAME = "//div[text()='%s']";
 
     @Step("Open settings")
     public NewProjectPage openSettings() {
@@ -90,9 +90,9 @@ public class TestRepositoryPage extends BasePage {
     }
 
     @Step("Choose created Case")
-    public EditCasePage chooseCase() {
-        log.info("Choose Case by locator: " + CASE_NAME);
-        $(CASE_NAME).waitUntil(Condition.appear, timeout).click();
+    public EditCasePage chooseCase(String caseName) {
+        log.info("Choose Case by name: " + caseName);
+        $(By.xpath(String.format(CASE_NAME,caseName))).waitUntil(Condition.appear, timeout).click();
         return new EditCasePage();
     }
 

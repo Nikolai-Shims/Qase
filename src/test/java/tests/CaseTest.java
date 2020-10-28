@@ -48,9 +48,9 @@ public class CaseTest extends BaseTest {
                 .login(USERNAME, PASSWORD);
         caseSteps
                 .createNewCase(testCase)
-                .validateThatCaseWasCreated(testCase)
-                .editCase(editCase)
-                .validateThatCaseWasEdited(editCase)
-                .deleteCase();
+                .validateThatCaseWasCreated(testCase,title)
+                .editCase(editCase,title)
+                .validateThatCaseWasEdited(editCase,editTitle)
+                .deleteCase(editTitle);
     }
 }

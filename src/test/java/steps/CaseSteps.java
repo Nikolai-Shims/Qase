@@ -35,10 +35,10 @@ public class CaseSteps {
     }
 
     @Step("Validate that 'Case' was created")
-    public CaseSteps validateThatCaseWasCreated(TestCase testCase) {
+    public CaseSteps validateThatCaseWasCreated(TestCase testCase,String caseName) {
         log.info("Validate data: " + testCase);
         testRepositoryPage
-                .chooseCase();
+                .chooseCase(caseName);
         assertEquals(Select.getTextBySelect("Severity"), testCase.getSeverity());
         assertEquals(Select.getTextBySelect("Priority"), testCase.getPriority());
         assertEquals(Input.getTextByInput("Preconditions"), testCase.getPreConditions());
@@ -51,10 +51,10 @@ public class CaseSteps {
     }
 
     @Step("Edit existing 'Case'")
-    public CaseSteps editCase(TestCase editCase) {
-        log.info("Edit existing case with data: " + editCase);
+    public CaseSteps editCase(TestCase editCase,String caseName) {
+        log.info(String.format("Edit existing case with data: %s by case name %s",editCase,caseName));
         testRepositoryPage
-                .chooseCase()
+                .chooseCase(caseName)
                 .editCase()
                 .createNewCase(editCase)
                 .saveCase();
@@ -62,16 +62,17 @@ public class CaseSteps {
     }
 
     @Step("Validate that existing case was edited")
-    public CaseSteps validateThatCaseWasEdited(TestCase editTestCase) {
-        log.info("Validate data: " + editTestCase);
-        validateThatCaseWasCreated(editTestCase);
+    public CaseSteps validateThatCaseWasEdited(TestCase editTestCase,String caseName) {
+        log.info(String.format("Validate data: %s by case name %s",editTestCase,caseName));
+        validateThatCaseWasCreated(editTestCase,caseName);
         return this;
     }
 
     @Step("Delete Case")
-    public CaseSteps deleteCase() {
+    public CaseSteps deleteCase(String caseName) {
+        log.info("Delete Case by name: " + caseName);
         testRepositoryPage
-                .chooseCase()
+                .chooseCase(caseName)
                 .clickDeleteCase()
                 .isPageOpened()
                 .confirmDeletingCase();
