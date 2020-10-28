@@ -31,9 +31,9 @@ public class BaseTest {
         caseSteps = new CaseSteps();
         testPlanSteps = new TestPlanSteps();
         Configuration.browser = "chrome";
-        Configuration.timeout = 3000;
+        Configuration.timeout = 6000;
         Configuration.clickViaJs = false;
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.startMaximized = true;
     }
 
