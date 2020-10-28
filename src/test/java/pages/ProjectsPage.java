@@ -54,7 +54,7 @@ public class ProjectsPage extends BasePage {
     @Step("Choose project and click")
     public TestRepositoryPage deleteProject(String projectName) {
         log.info("Project with name: " + projectName + ", will be delete");
-        $(By.xpath(String.format(CHOOSE_PROJECT_BY_NAME, projectName))).waitUntil(Condition.appear,timeout).click();
+        $(By.xpath(String.format(CHOOSE_PROJECT_BY_NAME, projectName))).waitUntil(Condition.appear, timeout).click();
         return new TestRepositoryPage();
     }
 }

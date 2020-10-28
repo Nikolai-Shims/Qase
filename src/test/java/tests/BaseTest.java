@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import steps.CaseSteps;
 import steps.LoginSteps;
 import steps.ProjectSteps;
 import steps.SuiteSteps;
@@ -22,12 +23,14 @@ public class BaseTest {
     LoginSteps loginSteps;
     ProjectSteps projectSteps;
     SuiteSteps suiteSteps;
+    CaseSteps caseSteps;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {
         loginSteps = new LoginSteps();
         projectSteps = new ProjectSteps();
         suiteSteps = new SuiteSteps();
+        caseSteps = new CaseSteps();
         Configuration.browser = "chrome";
         Configuration.timeout = 3000;
         Configuration.clickViaJs = false;

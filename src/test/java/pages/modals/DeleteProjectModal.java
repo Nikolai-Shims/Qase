@@ -7,6 +7,7 @@ import pages.BasePage;
 import pages.ProjectsPage;
 
 import static com.codeborne.selenide.Selenide.$;
+
 @Log4j2
 public class DeleteProjectModal extends BasePage {
 

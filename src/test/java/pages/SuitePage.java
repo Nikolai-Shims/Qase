@@ -36,13 +36,13 @@ public class SuitePage extends BasePage {
     @Step("Click button 'Create suite' ")
     public TestRepositoryPage confirmSuite() {
         log.info("Click button 'Create suite' by locator: " + BUTTON_CREATE_SUITE);
-        $(BUTTON_CREATE_SUITE).waitUntil(Condition.appear,timeout).click();
+        $(BUTTON_CREATE_SUITE).waitUntil(Condition.appear, timeout).click();
         return new TestRepositoryPage();
     }
 
     @Override
     @Deprecated
-    public SuitePage isPageOpened(){
+    public SuitePage isPageOpened() {
         return this;
     }
 
