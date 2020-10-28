@@ -2,6 +2,7 @@ package tests;
 
 import models.TestCase;
 import org.testng.annotations.Test;
+import tests.another.Retry;
 
 public class CaseTest extends BaseTest {
 
@@ -42,15 +43,15 @@ public class CaseTest extends BaseTest {
             .automationStatus("Automated")
             .build();
 
-    @Test
+    @Test(retryAnalyzer = Retry.class, description = "Create new 'Case' and validate that case was created, edit existing 'Case',validate that case was edited, and delete 'Case'")
     public void createEditAndDeleteCase() {
         loginSteps
                 .login(USERNAME, PASSWORD);
         caseSteps
                 .createNewCase(testCase)
-                .validateThatCaseWasCreated(testCase,title)
-                .editCase(editCase,title)
-                .validateThatCaseWasEdited(editCase,editTitle)
+                .validateThatCaseWasCreated(testCase, title)
+                .editCase(editCase, title)
+                .validateThatCaseWasEdited(editCase, editTitle)
                 .deleteCase(editTitle);
     }
 }
