@@ -27,7 +27,8 @@ public class TestPlanSteps {
                 .addCases()
                 .isPageOpened()
                 .chooseCase()
-                .confirmThatTestCaseWasChosen()
+                .confirmThatTestCaseWasChosen();
+        testPlanPage
                 .confirmTestPlan();
         return this;
     }

@@ -5,7 +5,6 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import pages.BasePage;
-import pages.TestPlanPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -31,9 +30,8 @@ public class SelectTestCasesModal extends BasePage {
     }
 
     @Step("Click button 'Done'")
-    public TestPlanPage confirmThatTestCaseWasChosen() {
+    public void confirmThatTestCaseWasChosen() {
         log.info("Click button 'Done' by locator: " + BUTTON_DONE);
         $(By.xpath(BUTTON_DONE)).waitUntil(Condition.appear, timeout).click();
-        return new TestPlanPage();
     }
 }
