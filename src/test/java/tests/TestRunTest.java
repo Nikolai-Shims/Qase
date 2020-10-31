@@ -22,7 +22,7 @@ public class TestRunTest extends BaseTest {
             .build();
 
     @Test(retryAnalyzer = Retry.class, description = "Create 'test run'and validate that 'test run' was created, edit existing 'test run' and validate that 'test run' was edited then delete")
-    public void createTESTRUNbySTEPS() {
+    public void createEditDeleteTestRun() {
         loginSteps
                 .login(USERNAME, PASSWORD);
         testRunSteps
