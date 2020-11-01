@@ -35,7 +35,7 @@ public class CaseSteps {
     }
 
     @Step("Validate that 'Case' was created")
-    public CaseSteps validateThatCaseWasCreated(TestCase testCase,String caseName) {
+    public CaseSteps validateThatCaseWasCreated(TestCase testCase, String caseName) {
         log.info("Validate data: " + testCase);
         testRepositoryPage
                 .chooseCase(caseName);
@@ -51,8 +51,8 @@ public class CaseSteps {
     }
 
     @Step("Edit existing 'Case'")
-    public CaseSteps editCase(TestCase editCase,String caseName) {
-        log.info(String.format("Edit existing case with data: %s by case name %s",editCase,caseName));
+    public CaseSteps editCase(TestCase editCase, String caseName) {
+        log.info(String.format("Edit existing case with data: %s by case name %s", editCase, caseName));
         testRepositoryPage
                 .chooseCase(caseName)
                 .editCase()
@@ -62,9 +62,9 @@ public class CaseSteps {
     }
 
     @Step("Validate that existing case was edited")
-    public CaseSteps validateThatCaseWasEdited(TestCase editTestCase,String caseName) {
-        log.info(String.format("Validate data: %s by case name %s",editTestCase,caseName));
-        validateThatCaseWasCreated(editTestCase,caseName);
+    public CaseSteps validateThatCaseWasEdited(TestCase editTestCase, String caseName) {
+        log.info(String.format("Validate data: %s by case name %s", editTestCase, caseName));
+        validateThatCaseWasCreated(editTestCase, caseName);
         return this;
     }
 

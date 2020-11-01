@@ -5,10 +5,7 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import steps.CaseSteps;
-import steps.LoginSteps;
-import steps.ProjectSteps;
-import steps.SuiteSteps;
+import steps.*;
 import tests.another.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -24,6 +21,7 @@ public class BaseTest {
     ProjectSteps projectSteps;
     SuiteSteps suiteSteps;
     CaseSteps caseSteps;
+    TestPlanSteps testPlanSteps;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {
@@ -31,6 +29,7 @@ public class BaseTest {
         projectSteps = new ProjectSteps();
         suiteSteps = new SuiteSteps();
         caseSteps = new CaseSteps();
+        testPlanSteps = new TestPlanSteps();
         Configuration.browser = "chrome";
         Configuration.timeout = 3000;
         Configuration.clickViaJs = false;

@@ -25,7 +25,7 @@ public class TestRepositoryPage extends BasePage {
 
     @Step("Open settings")
     public NewProjectPage openSettings() {
-        log.info("Open 'Settings' by locator: " + SETTINGS);
+        log.info(String.format("Open 'Settings' by locator: %s", SETTINGS));
         $(By.xpath(SETTINGS)).waitUntil(Condition.appear, timeout).click();
         return new NewProjectPage();
     }
@@ -38,28 +38,28 @@ public class TestRepositoryPage extends BasePage {
 
     @Step("Open working project by link: " + PROJECT_URL)
     public TestRepositoryPage openTestRepositoryPage() {
-        log.info("Open 'Test Repository' by link: " + PROJECT_URL);
+        log.info(String.format("Open 'Test Repository' by link: %s", PROJECT_URL));
         open(PROJECT_URL);
         return this;
     }
 
     @Step("Click button 'Create new suite'")
     public SuitePage createSuite() {
-        log.info("Click button 'Create new suite' by locator: " + CREATE_SUITE);
+        log.info(String.format("Click button 'Create new suite' by locator: %s ", CREATE_SUITE));
         $(By.xpath(CREATE_SUITE)).waitUntil(Condition.appear, timeout).click();
         return new SuitePage();
     }
 
     @Step("Choose option 'Delete' and press it")
     public DeleteSuiteModal deleteSuite(String name) {
-        log.info("Find element by locator: " + DELETE_SUITE + ", move to element and press");
+        log.info(String.format("Find element by locator: %s, move to element and press", DELETE_SUITE));
         Selenide.actions().moveToElement($(By.xpath(String.format(DELETE_SUITE, name)))).click().build().perform();
         return new DeleteSuiteModal();
     }
 
     @Step("Choose option 'Edit' and press it")
     public SuitePage editSuite(String suite) {
-        log.info("Find element by locator: " + EDIT_SUITE + ", move to element and press it");
+        log.info(String.format("Find element by locator: %s, move to element and press it", EDIT_SUITE));
         Selenide.actions().moveToElement($(By.xpath(String.format(EDIT_SUITE, suite)))).click().build().perform();
         return new SuitePage();
     }
@@ -70,16 +70,9 @@ public class TestRepositoryPage extends BasePage {
         return $(By.xpath(String.format(SUITE_NAME, suite))).getText();
     }
 
-    @Step("Get description")
-    public String validateDescription(String text) {
-        log.info(String.format("Get description data: %s", text));
-        return $(By.xpath(String.format(DESCRIPTION_PROJECT, text))).getText();
-    }
-
-
     @Step("Click button 'Create new case'")
     public TestCasePage createNewTestCase() {
-        log.info("Click button 'Create new case' by locator: " + CREATE_CASE);
+        log.info(String.format("Click button 'Create new case' by locator: %s", CREATE_CASE));
         int amount = $$(By.xpath(CREATE_CASE)).size();
         if (amount != 0) {
             $(By.xpath(CREATE_CASE)).waitUntil(Condition.appear, timeout).click();
@@ -91,8 +84,8 @@ public class TestRepositoryPage extends BasePage {
 
     @Step("Choose created Case")
     public EditCasePage chooseCase(String caseName) {
-        log.info("Choose Case by name: " + caseName);
-        $(By.xpath(String.format(CASE_NAME,caseName))).waitUntil(Condition.appear, timeout).click();
+        log.info(String.format("Choose Case by name: %s", caseName));
+        $(By.xpath(String.format(CASE_NAME, caseName))).waitUntil(Condition.appear, timeout).click();
         return new EditCasePage();
     }
 
