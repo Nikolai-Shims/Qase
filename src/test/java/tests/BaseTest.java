@@ -22,6 +22,7 @@ public class BaseTest {
     SuiteSteps suiteSteps;
     CaseSteps caseSteps;
     TestPlanSteps testPlanSteps;
+    TestRunSteps testRunSteps;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {
@@ -30,8 +31,9 @@ public class BaseTest {
         suiteSteps = new SuiteSteps();
         caseSteps = new CaseSteps();
         testPlanSteps = new TestPlanSteps();
+        testRunSteps = new TestRunSteps();
         Configuration.browser = "chrome";
-        Configuration.timeout = 3000;
+        Configuration.timeout = 5000;
         Configuration.clickViaJs = false;
         Configuration.headless = false;
         Configuration.startMaximized = true;

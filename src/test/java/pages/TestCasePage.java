@@ -6,13 +6,14 @@ import elements.Select;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.TestCase;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class TestCasePage extends BasePage {
 
-    private static final String BUTTON_SAVE = ".mr-3.save-button";
+    private static final String BUTTON_SAVE = "//button[text()='Save']";
 
     @Step("Create new Case {testCase.title} ")
     public TestCasePage createNewCase(TestCase testCase) {
@@ -33,13 +34,13 @@ public class TestCasePage extends BasePage {
     @Step("Click the button 'Save'")
     public TestRepositoryPage saveCase() {
         log.info("Click the button 'Save' by locator: " + BUTTON_SAVE);
-        $(BUTTON_SAVE).waitUntil(Condition.appear, timeout).click();
+        $(By.xpath(BUTTON_SAVE)).waitUntil(Condition.appear, timeout).click();
         return new TestRepositoryPage();
     }
 
     @Step("Validate that 'Test Case' page was opened")
     public TestCasePage isPageOpened() {
-        $(BUTTON_SAVE).shouldBe(Condition.visible);
+        $(By.xpath(BUTTON_SAVE)).shouldBe(Condition.visible);
         return this;
     }
 }
