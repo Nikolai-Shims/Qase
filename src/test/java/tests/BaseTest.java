@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -10,6 +11,7 @@ import tests.another.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
+@Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
 
@@ -41,8 +43,12 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true, description = "Close browser")
     public void close() {
-        if (null != getWebDriver())
+        try {
             getWebDriver().quit();
+        } catch (IllegalStateException ex) {
+            log.warn("WebDriver is not opened on attempt to close it");
+            log.warn(ex.getLocalizedMessage());
+        }
     }
 
 }
