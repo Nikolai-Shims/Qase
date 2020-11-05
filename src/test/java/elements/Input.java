@@ -33,7 +33,6 @@ public class Input {
         log.info(String.format("Fill the field %s with data: %s, by locator: %s", label, text, locator));
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).clear();
         $(By.xpath(String.format(locator, label))).shouldBe(Condition.visible).sendKeys(text);
-        sleep(2000);
         return this;
     }
 

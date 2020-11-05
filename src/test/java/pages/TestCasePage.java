@@ -19,15 +19,15 @@ public class TestCasePage extends BasePage {
     public TestCasePage createNewCase(TestCase testCase) {
         log.info("Create new test Case by name: " + testCase.getTitle());
         new Input("Title").writeTitle(testCase.getTitle());
-        new Select("Status").select(testCase.getStatus());
+        new Input("Pre-conditions").write(testCase.getPreConditions());
+        new Input("Post-conditions").write(testCase.getPostConditions());
         new Input("Description").write(testCase.getDescription());
+        new Select("Status").select(testCase.getStatus());
         new Select("Severity").select(testCase.getSeverity());
         new Select("Priority").select(testCase.getPriority());
         new Select("Type").select(testCase.getType());
         new Select("Behavior").select(testCase.getBehavior());
         new Select("Automation status").select(testCase.getAutomationStatus());
-        new Input("Pre-conditions").write(testCase.getPreConditions());
-        new Input("Post-conditions").write(testCase.getPostConditions());
         return this;
     }
 

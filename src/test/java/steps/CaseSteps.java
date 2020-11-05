@@ -42,6 +42,7 @@ public class CaseSteps {
         assertEquals(Select.getTextBySelect("Severity"), testCase.getSeverity());
         assertEquals(Select.getTextBySelect("Priority"), testCase.getPriority());
         assertEquals(Input.getTextByInput("Preconditions"), testCase.getPreConditions());
+        assertEquals(Input.getTextByInput("Postconditions"),testCase.getPostConditions());
         assertEquals(Input.getTextByInput("Description"), testCase.getDescription());
         assertEquals(Select.getTextBySelect("Behavior"), testCase.getBehavior());
         assertEquals(Select.getTextBySelect("Type"), testCase.getType());

@@ -15,6 +15,7 @@
         <aspect.jveaver>1.9.1</aspect.jveaver>
         <testng>7.0.0</testng>
         <java.faker>0.15</java.faker>
+        <restAssured>4.3.1</restAssured>
     </properties>
 
 
@@ -114,6 +115,14 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${java.faker}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restAssured}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
