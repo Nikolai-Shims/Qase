@@ -2,7 +2,8 @@ package tests;
 
 import models.TestRun;
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class TestRunTest extends BaseTest {
 

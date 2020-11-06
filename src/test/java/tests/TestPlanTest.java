@@ -2,7 +2,8 @@ package tests;
 
 import models.TestPlan;
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class TestPlanTest extends BaseTest {
 

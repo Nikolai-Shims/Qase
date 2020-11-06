@@ -1,7 +1,8 @@
 package tests;
 
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class SuiteTest extends BaseTest {
 

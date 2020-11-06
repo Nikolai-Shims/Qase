@@ -1,4 +1,4 @@
-package tests;
+package tests.base;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
@@ -7,7 +7,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import steps.*;
-import tests.another.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -18,13 +17,13 @@ public class BaseTest {
     public static final String USERNAME = System.getenv("username");
     public static final String PASSWORD = System.getenv("password");
 
-    Faker faker = new Faker();
-    LoginSteps loginSteps;
-    ProjectSteps projectSteps;
-    SuiteSteps suiteSteps;
-    CaseSteps caseSteps;
-    TestPlanSteps testPlanSteps;
-    TestRunSteps testRunSteps;
+    protected Faker faker = new Faker();
+    protected LoginSteps loginSteps;
+    protected ProjectSteps projectSteps;
+    protected SuiteSteps suiteSteps;
+    protected CaseSteps caseSteps;
+    protected TestPlanSteps testPlanSteps;
+    protected TestRunSteps testRunSteps;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {

@@ -2,7 +2,8 @@ package tests;
 
 import models.TestCase;
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class CaseTest extends BaseTest {
 
