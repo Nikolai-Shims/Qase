@@ -45,7 +45,7 @@
                     </argLine>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/smokeTest.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
                 </configuration>
