@@ -2,10 +2,10 @@ package tests;
 
 import models.TestPlan;
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class TestPlanTest extends BaseTest {
-
     String title = faker.name().username();
     String description = faker.name().username();
     String editTitle = faker.name().username();

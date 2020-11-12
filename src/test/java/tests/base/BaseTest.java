@@ -1,5 +1,6 @@
-package tests;
+package tests.base;
 
+import adapters.SuiteAdapter;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
@@ -7,7 +8,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import steps.*;
-import tests.another.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -18,13 +18,26 @@ public class BaseTest {
     public static final String USERNAME = System.getenv("username");
     public static final String PASSWORD = System.getenv("password");
 
-    Faker faker = new Faker();
-    LoginSteps loginSteps;
-    ProjectSteps projectSteps;
-    SuiteSteps suiteSteps;
-    CaseSteps caseSteps;
-    TestPlanSteps testPlanSteps;
-    TestRunSteps testRunSteps;
+    protected Faker faker = new Faker();
+    public String title = faker.name().username();
+    public String description = faker.chuckNorris().fact();
+    public String postCondition = faker.name().username();
+    public String preCondition = faker.name().username();
+    public String editTitle = faker.name().username();
+    public String editDescription = faker.name().username();
+    public String editPreCondition = faker.name().username();
+    public String editPostCondition = faker.name().username();
+    public String suiteName = faker.name().username();
+    public String editSuiteName = faker.name().username();
+
+
+    protected LoginSteps loginSteps;
+    protected ProjectSteps projectSteps;
+    protected SuiteSteps suiteSteps;
+    protected CaseSteps caseSteps;
+    protected TestPlanSteps testPlanSteps;
+    protected TestRunSteps testRunSteps;
+    protected SuiteAdapter suiteAdapter;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {
@@ -34,6 +47,7 @@ public class BaseTest {
         caseSteps = new CaseSteps();
         testPlanSteps = new TestPlanSteps();
         testRunSteps = new TestRunSteps();
+        suiteAdapter = new SuiteAdapter();
         Configuration.browser = "chrome";
         Configuration.timeout = 5000;
         Configuration.clickViaJs = false;

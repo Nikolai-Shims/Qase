@@ -2,14 +2,10 @@ package tests;
 
 import models.TestRun;
 import org.testng.annotations.Test;
-import tests.another.Retry;
+import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class TestRunTest extends BaseTest {
-
-    String description = faker.name().username();
-    String title = faker.name().username();
-    String editDescription = faker.name().username();
-    String editTitle = faker.name().username();
 
     TestRun testRun = TestRun.builder()
             .title(title)
@@ -29,7 +25,7 @@ public class TestRunTest extends BaseTest {
                 .createNewTestRun(testRun)
                 .validateThatTestRunWasCreated(title, title)
                 .editTestRun(title, editTestRun)
-                .validateThatTestRunWasEdited(editTitle,editTitle)
+                .validateThatTestRunWasEdited(editTitle, editTitle)
                 .deleteTestRun(editTitle);
 
     }
