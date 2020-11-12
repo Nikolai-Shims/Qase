@@ -1,25 +1,25 @@
-package tests.api;
+package adapters;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 import org.apache.http.protocol.HTTP;
 
-import java.io.File;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
 @Log4j2
-public abstract class BaseApi {
+abstract class BaseAdapter {
+
     Response response;
 
-    private static final String URL = "https://api.qase.io/v1/";
+    private static final String URL = "https://api.qase.io";
     public static final String TOKEN = System.getenv("token");
 
-    @Step("Delete Suite")
-    public Response deleteRequest(String uri, int statusCode) {
-        log.info(String.format("Delete suite with %s", uri));
+    @Step("Delete request")
+    protected Response deleteRequest(String uri, int statusCode) {
+        log.info(String.format("Delete request with %s", uri));
         response = given()
                 .header("Token", TOKEN)
                 .when()
@@ -32,8 +32,8 @@ public abstract class BaseApi {
 
     }
 
-    @Step("Create new Suite")
-    public Response postRequest(File file, String uri, int statusCode) {
+    @Step("Post Request")
+    protected Response postRequest(String file, String uri, int statusCode) {
         log.info(String.format("Create new 'Suite' by API via file: %s and uri: %s", file, uri));
         response = given()
                 .header(HTTP.CONTENT_TYPE, "application/json")
@@ -41,7 +41,7 @@ public abstract class BaseApi {
                 .body(file)
                 .when()
                 .log().body()
-                .post(URL + uri)
+                .post(String.format("%s%s", URL, uri))
                 .then()
                 .log().body()
                 .statusCode(statusCode)
@@ -50,9 +50,9 @@ public abstract class BaseApi {
         return response;
     }
 
-    @Step("Get existing suite")
+    @Step("Get request")
     public Response getRequest(String uri, int statusCode) {
-        log.info(String.format("Get existing suite by uri: %s", uri));
+        log.info(String.format("Get request by uri: %s", uri));
         response = given()
                 .header(HTTP.CONTENT_TYPE, "application/json")
                 .header("Token", TOKEN)
@@ -64,9 +64,9 @@ public abstract class BaseApi {
         return response;
     }
 
-    @Step("Update existing Suite ")
-    public Response patchRequest(File file, String uri, int statusCode) {
-        log.info(String.format("Update existing 'Suite' by API via file: %s and uri: %s", file, uri));
+    @Step("Update request")
+    public Response patchRequest(String file, String uri, int statusCode) {
+        log.info(String.format("Update request by API via file: %s and uri: %s", file, uri));
         response = given()
                 .header(HTTP.CONTENT_TYPE, "application/json")
                 .header("Token", TOKEN)
@@ -86,3 +86,5 @@ public abstract class BaseApi {
         assertEquals(response.jsonPath().getString(path), expectedResult);
     }
 }
+
+

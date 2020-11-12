@@ -1,5 +1,6 @@
 package tests.base;
 
+import adapters.SuiteAdapter;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
@@ -18,12 +19,25 @@ public class BaseTest {
     public static final String PASSWORD = System.getenv("password");
 
     protected Faker faker = new Faker();
+    public String title = faker.name().username();
+    public String description = faker.chuckNorris().fact();
+    public String postCondition = faker.name().username();
+    public String preCondition = faker.name().username();
+    public String editTitle = faker.name().username();
+    public String editDescription = faker.name().username();
+    public String editPreCondition = faker.name().username();
+    public String editPostCondition = faker.name().username();
+    public String suiteName = faker.name().username();
+    public String editSuiteName = faker.name().username();
+
+
     protected LoginSteps loginSteps;
     protected ProjectSteps projectSteps;
     protected SuiteSteps suiteSteps;
     protected CaseSteps caseSteps;
     protected TestPlanSteps testPlanSteps;
     protected TestRunSteps testRunSteps;
+    protected SuiteAdapter suiteAdapter;
 
     @BeforeMethod(description = "Initialize object and configuration settings")
     public void beforeTest() {
@@ -33,6 +47,7 @@ public class BaseTest {
         caseSteps = new CaseSteps();
         testPlanSteps = new TestPlanSteps();
         testRunSteps = new TestRunSteps();
+        suiteAdapter = new SuiteAdapter();
         Configuration.browser = "chrome";
         Configuration.timeout = 5000;
         Configuration.clickViaJs = false;

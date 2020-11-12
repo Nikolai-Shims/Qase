@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="smokeTest" parallel="classes">
+<suite thread-count="3" name="smokeTest" parallel="classes">
     <test name="smokeTest">
         <classes>
             <class name="tests.CaseTest"/>
@@ -9,6 +9,7 @@
             <class name="tests.SuiteTest"/>
             <class name="tests.TestPlanTest"/>
             <class name="tests.TestRunTest"/>
+            <class name="tests.api.SuiteApiTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

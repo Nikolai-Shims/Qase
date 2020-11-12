@@ -16,6 +16,7 @@
         <testng>7.0.0</testng>
         <java.faker>0.15</java.faker>
         <restAssured>4.3.1</restAssured>
+        <suiteXml>src/test/resources/smokeTest.xml</suiteXml>
     </properties>
 
 
@@ -45,7 +46,7 @@
                     </argLine>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/smokeTest.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXml}</suiteXmlFile>
                     </suiteXmlFiles>
 
                 </configuration>
