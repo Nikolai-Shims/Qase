@@ -7,7 +7,13 @@ import tests.base.BaseTest;
 
 
 public class SuiteApiTest extends BaseTest {
+
     Gson gson = new Gson();
+    public String title = faker.name().username();
+    public String description = faker.chuckNorris().fact();
+    public String postCondition = faker.name().username();
+    public String editTitle = faker.name().username();
+    public String editDescription = faker.name().username();
 
     TestSuite suite = TestSuite.builder()
             .title(title)

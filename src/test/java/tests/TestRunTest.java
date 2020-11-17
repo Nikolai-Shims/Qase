@@ -7,6 +7,11 @@ import tests.base.Retry;
 
 public class TestRunTest extends BaseTest {
 
+    public String title = faker.name().username();
+    public String description = faker.chuckNorris().fact();
+    public String editTitle = faker.name().username();
+    public String editDescription = faker.name().username();
+
     TestRun testRun = TestRun.builder()
             .title(title)
             .description(description)

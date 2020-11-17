@@ -7,6 +7,15 @@ import tests.base.Retry;
 
 public class CaseTest extends BaseTest {
 
+    public String title = faker.name().username();
+    public String description = faker.chuckNorris().fact();
+    public String postCondition = faker.name().username();
+    public String preCondition = faker.name().username();
+    public String editTitle = faker.name().username();
+    public String editDescription = faker.name().username();
+    public String editPreCondition = faker.name().username();
+    public String editPostCondition = faker.name().username();
+
     TestCase testCase = TestCase.builder()
             .preConditions(preCondition)
             .description(description)

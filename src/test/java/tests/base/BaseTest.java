@@ -19,17 +19,6 @@ public class BaseTest {
     public static final String PASSWORD = System.getenv("password");
 
     protected Faker faker = new Faker();
-    public String title = faker.name().username();
-    public String description = faker.chuckNorris().fact();
-    public String postCondition = faker.name().username();
-    public String preCondition = faker.name().username();
-    public String editTitle = faker.name().username();
-    public String editDescription = faker.name().username();
-    public String editPreCondition = faker.name().username();
-    public String editPostCondition = faker.name().username();
-    public String suiteName = faker.name().username();
-    public String editSuiteName = faker.name().username();
-
 
     protected LoginSteps loginSteps;
     protected ProjectSteps projectSteps;

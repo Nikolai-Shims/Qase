@@ -6,6 +6,7 @@ import tests.base.BaseTest;
 import tests.base.Retry;
 
 public class TestPlanTest extends BaseTest {
+
     String title = faker.name().username();
     String description = faker.name().username();
     String editTitle = faker.name().username();
