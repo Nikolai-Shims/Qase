@@ -19,7 +19,7 @@ public class TestRepositoryPage extends BasePage {
     private static final String PROJECT_URL = "https://app.qase.io/project/QASEPROJEC";
     private static final String DELETE_SUITE = "//span[text()='%s']/descendant::i[contains(@class,'fa-trash')]";
     private static final String EDIT_SUITE = "//span[text()='%s']/descendant::i[contains(@class,'fa-pencil-alt')]";
-    private static final String SUITE_NAME = "//span[text()='%s']";
+    private static final String SUITE_NAME = "//div[@class='suite-block-header']/child::span[contains(text(),'%s')]";
     private static final String DESCRIPTION_PROJECT = "//span[text()='%s']/following-sibling::p[contains(@class,'suite-description')]";
     private static final String CASE_NAME = "//div[text()='%s']";
 

@@ -29,10 +29,10 @@ public class SuiteSteps {
     }
 
     @Step("Validate that 'Suite' was created")
-    public SuiteSteps validateThatSuiteWasCreated(String projectName) {
-        log.info("Validate that 'Suite' with name: " + projectName + ", was created");
-        String nameOfSuite = testRepositoryPage.validateSuiteName(projectName);
-        assertEquals(nameOfSuite, projectName);
+    public SuiteSteps validateThatSuiteWasCreated(String suiteName) {
+        log.info("Validate that 'Suite' with name: " + suiteName + ", was created");
+        String nameOfSuite = testRepositoryPage.validateSuiteName(suiteName);
+        assertEquals(nameOfSuite, suiteName);
         return this;
     }
 

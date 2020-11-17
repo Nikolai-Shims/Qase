@@ -6,16 +6,17 @@ import tests.base.Retry;
 
 public class SuiteTest extends BaseTest {
 
-    public String title = faker.name().username();
+    public String title = faker.name().name();
     public String description = faker.chuckNorris().fact();
     public String editDescription = faker.name().username();
     public String suiteName = faker.name().username();
     public String editSuiteName = faker.name().username();
 
-    @Test(retryAnalyzer = Retry.class, description = "Create new suite,validate that suite was created. Edit existing suite, and validate that Suite was edited. Delete Suite and validate that suite was deleted")
+    @Test(description = "Create new suite,validate that suite was created. Edit existing suite, and validate that Suite was edited. Delete Suite and validate that suite was deleted")
     public void editedAndDeleteSuite() {
         loginSteps
-                .login(USERNAME, PASSWORD);
+                //.login(USERNAME, PASSWORD);
+                .login("nikolai.shims@gmail.com","12345qwert");
         suiteSteps
                 .createNewSuite(suiteName, description)
                 .validateThatSuiteWasCreated(suiteName)
