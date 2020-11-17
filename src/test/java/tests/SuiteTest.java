@@ -12,11 +12,10 @@ public class SuiteTest extends BaseTest {
     public String suiteName = faker.name().username();
     public String editSuiteName = faker.name().username();
 
-    @Test(description = "Create new suite,validate that suite was created. Edit existing suite, and validate that Suite was edited. Delete Suite and validate that suite was deleted")
+    @Test(retryAnalyzer = Retry.class, description = "Create new suite,validate that suite was created. Edit existing suite, and validate that Suite was edited. Delete Suite and validate that suite was deleted")
     public void editedAndDeleteSuite() {
         loginSteps
-                //.login(USERNAME, PASSWORD);
-                .login("nikolai.shims@gmail.com","12345qwert");
+                .login(USERNAME, PASSWORD);
         suiteSteps
                 .createNewSuite(suiteName, description)
                 .validateThatSuiteWasCreated(suiteName)
